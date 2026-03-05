@@ -6,7 +6,7 @@ This repository contains the Verilog HDL implementation of a **Single-Cycle RISC
 
 * **Architecture**: Single-cycle data path with Fetch, Decode, Execute, Memory, and Write-Back stages.
 
-* **Instruction Support**: Implements base RISC-V Integer (RV32I) instructions, including R-type, I-type (Load/ADDI), S-type (Store), and B-type (Branch).
+* **Instruction Support**: Implements primary RISC-V Integer (RV32I) instruction formats, including R-type, I-type (Load/ADDI), S-type (Store), and B-type (Branch).
 
 
 * **Timing Optimized**:
@@ -90,3 +90,4 @@ Timing analysis was performed using **Lattice Radiant Timing Analysis (Post-Rout
 * **Synthesis & Implementation**: Lattice Radiant Software (v2025.1.0)
 * **Device**: LFCPNX-100-8LFG672C (CertusPro-NX)
 * **Synthesis Engine**: Lattice Synthesis Engine (LSE)
+
