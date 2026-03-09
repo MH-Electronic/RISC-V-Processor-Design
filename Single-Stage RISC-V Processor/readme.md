@@ -1,4 +1,4 @@
-# Single-Cycle RISC-V SoC Implementation
+# Single-Cycle RISC-V SoC Implementation Phase 1
 
 This repository contains the Verilog HDL implementation of a **Single-Cycle RISC-V Processor** optimized for the Lattice **CertusPro-NX (LFCPNX-100)** FPGA using Lattice Radiant.
 
@@ -74,14 +74,17 @@ To ensure physical stability and meet timing requirements on the CertusPro-NX, t
 
 ## 📈 Performance Benchmarks
 
-Timing analysis was performed using **Lattice Radiant Timing Analysis (Post-Route)**:
+By analyzing the **Map Report** and **Power Calculator** results, the physical implementation on the **LFCPNX-100** is summarized below:
 
-| Metric | Measured Value |
-| --- | --- |
-| **Target Period** | 25.0 ns (40 MHz) |
-| **Worst-Case Path Delay** | ~22.2 ns |
-| **Max Operating Frequency ($F_{max}$)** | **45.03 MHz** |
-| **Setup Slack Margin** | ~0.8 ns (Robust Pass) |
+| Metric | Measured Value | Analysis |
+| --- | --- | --- |
+| **Max Operating Frequency ($F_{max}$)** | **45.03 MHz** | Optimized for the 40MHz system clock target. |
+| **Total LUT4 Usage** | **581** | Efficient logic mapping (mostly within `u_core`). |
+| **PFU Registers** | **21** | Minimal sequential overhead; primary storage in RegFile. |
+| **Distributed RAM** | **192** | Register file implemented via LUT-RAM for speed. |
+| **Embedded Block RAM (EBR)** | **2** | Efficient use of SP16K primitives for ROM/RAM. |
+| **Total Power Consumption** | **45.0 mW** | Ultra-low power profile suitable for edge deployment. |
+| **Core Dynamic Power** | **5.0 mW** | Power consumed specifically by logic switching. |
 
 ---
 
@@ -90,4 +93,16 @@ Timing analysis was performed using **Lattice Radiant Timing Analysis (Post-Rout
 * **Synthesis & Implementation**: Lattice Radiant Software (v2025.1.0)
 * **Device**: LFCPNX-100-8LFG672C (CertusPro-NX)
 * **Synthesis Engine**: Lattice Synthesis Engine (LSE)
+
+---
+
+### 🚀 Phase 2: Professional Single-Cycle SoC
+
+* **RV32I Full Compliance**: Complete implementation of all 47 base integer instructions and validation against the RISC-V Architectural Test Suite.
+* **Privileged Spec Support**: Integration of Machine-mode Control and Status Registers (CSRs) for performance monitoring and basic exception handling.
+* **Wishbone Interconnect**: Transitioning to a standardized Wishbone bus fabric to allow "plug-and-play" peripheral integration.
+* **Advanced Peripherals**: Implementation of a 16550-compatible UART for serial communication and a 64-bit Machine Timer.
+* **Verification Rigor**: Expanding the SystemVerilog environment to include Constrained Random Verification (CRV) and Functional Coverage.
+
+
 
