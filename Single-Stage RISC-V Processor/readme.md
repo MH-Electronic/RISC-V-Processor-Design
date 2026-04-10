@@ -2,7 +2,7 @@
 
 This repository contains the Verilog HDL implementation of a **Single-Cycle RISC-V Processor** optimized for the Lattice **CertusPro-NX (LFCPNX-100)** FPGA using Lattice Radiant.
 
-[!Phase1_Core](./images/architecture.png)
+![Phase1_Core](./images/architecture.png)
 
 ## 🚀 Key Features
 
